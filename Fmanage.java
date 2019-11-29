@@ -20,7 +20,7 @@ public class Fmanage implements Serializable {
  
     
  // to append username@password in text file \\correct;
-     public static boolean  WriteInTextFile(String E_mail,String password,String id, String FilePath) {
+     public boolean  WriteInTextFile(String E_mail,String password,String id, String FilePath) {
          String data = E_mail+"#"+password+"#"+id+"#"+"true";
         PrintWriter writter = null;
         try {
@@ -36,7 +36,7 @@ public class Fmanage implements Serializable {
      
      
      
-     public static boolean WriteInTextFileFlights(String from,String to,String Movetime,String btime,String distance,String price,String id,String path){
+     public boolean WriteInTextFileFlights(String from,String to,String Movetime,String btime,String distance,String price,String id,String path){
            String data = from+"#"+to+"#"+Movetime+"#"+btime+"#"+distance+"#"+price+"#"+id;
         PrintWriter writter = null;
         try {
@@ -53,7 +53,7 @@ public class Fmanage implements Serializable {
      
      
 // write in text file without append \\ correct;
-      public static boolean  WriteInTxtFileWithoutAppend(String E_mail,String password,String id, String FilePath) {
+      public  boolean  WriteInTxtFileWithoutAppend(String E_mail,String password,String id, String FilePath) {
          String data = E_mail+"#"+password+"#"+id+"true";
         PrintWriter writter = null;
         try {
@@ -70,7 +70,7 @@ public class Fmanage implements Serializable {
       
       
 //read all line in text file and return it in ArraYList of String with #\\correct
-      public static ArrayList<String> ReadAllLines(String path){
+      public  ArrayList<String> ReadAllLines(String path){
              ArrayList<String> Infile =new ArrayList<>();
              Scanner Reader = null;        
         try {         
@@ -89,7 +89,7 @@ public class Fmanage implements Serializable {
    
       
 //read one line from text file by id \\ correct;
-      public static String DisplayLine(String id,String path){
+      public  String DisplayLine(String id,String path){
            Scanner Reader = null;        
         try {         
             Reader = new Scanner(new File(path));
@@ -110,7 +110,7 @@ public class Fmanage implements Serializable {
       
       
 //Search for flight if flight is exist = true,else =;\\correct
-        public static boolean SearchForFlight(String From,String To,String MoveTime,String BackTime,String Distance,String price,String path){
+        public  boolean SearchForFlight(String From,String To,String MoveTime,String BackTime,String Distance,String price,String path){
                 Scanner Reader = null;        
         try {         
             Reader = new Scanner(new File(path));}
@@ -139,7 +139,7 @@ public class Fmanage implements Serializable {
          
         
      // update line by id in flie;
-      public static boolean UpdateLineInTextFile(String email,String password,String id,String path){ 
+      public  boolean UpdateLineInTextFile(String email,String password,String id,String path){ 
         Scanner Reader = null;
         PrintWriter writter = null;
         String line;
@@ -182,7 +182,7 @@ public class Fmanage implements Serializable {
         
         
 // update line by id in flights flie;
-      public static boolean UpdateLineInTextFileFlight(String from,String to,String Movetime,String backTime,String distance,String price,String id,String path){ 
+      public  boolean UpdateLineInTextFileFlight(String from,String to,String Movetime,String backTime,String distance,String price,String id,String path){ 
         Scanner Reader = null;
         PrintWriter writter = null;
         String line;
@@ -230,7 +230,7 @@ public class Fmanage implements Serializable {
       
       
 // function to read last line and get last id from it and return it in String
-      public static String ReadLastId(String file) {
+      public  String ReadLastId(String file) {
         ArrayList<String> infile = new ArrayList<>();
         BufferedReader bufferedReader = null;
         try {
@@ -264,7 +264,7 @@ public class Fmanage implements Serializable {
       
       
 // function to read last id in flights file 
-      public static String ReadLastIdInFlightsFile(String file) {
+      public  String ReadLastIdInFlightsFile(String file) {
         ArrayList<String> infile = new ArrayList<>();
         BufferedReader bufferedReader = null;
         try {
@@ -297,7 +297,7 @@ public class Fmanage implements Serializable {
       
       
 //function SearchSorLogIn to search of email and password ,using with login(data,FilePath)\\correct
-       public static boolean SearchForLogin(String E_mail,String password,String Filepath) {
+       public  boolean SearchForLogin(String E_mail,String password,String Filepath) {
         Scanner Reader = null;
         try {         
             Reader = new Scanner(new File(Filepath));}
@@ -319,7 +319,7 @@ public class Fmanage implements Serializable {
        
        
 //function SearchForSignUp to return true if email is not there or false if email is there <using with sighnup\\correct
-       public static boolean SearchForEmail(String Email,String Filepath) {
+       public  boolean SearchForEmail(String Email,String Filepath) {
         Scanner Reader = null;
         try {         
             Reader = new Scanner(new File(Filepath));}
@@ -340,7 +340,7 @@ public class Fmanage implements Serializable {
        
        
 //function search for id to get id by using email and password
-       public static String SearchForId(String email,String password,String Filepath){
+       public String SearchForId(String email,String password,String Filepath){
            Scanner Reader = null;
            String id=null;
         try {         
@@ -363,7 +363,7 @@ public class Fmanage implements Serializable {
        
         
 // remove line in text file with id\\ correct
-       public static boolean RemoveLineFromTextFile(String id,String Filepath) {
+       public boolean RemoveLineFromTextFile(String id,String Filepath) {
         Scanner Reader = null;
         PrintWriter writter = null;
         String line;
@@ -390,8 +390,10 @@ public class Fmanage implements Serializable {
              }
         }
          catch (IOException e) { return false;}
-         return false;      
-}private static void WriteInTextFileAfterRemove(String data,String path){ 
+         return false;   
+           
+           
+}private  void WriteInTextFileAfterRemove(String data,String path){ 
          PrintWriter writter = null;
         try {
             writter = new PrintWriter(new FileWriter(new File(path),true));
@@ -404,7 +406,7 @@ public class Fmanage implements Serializable {
 
 
 // remove lin in text file with id for flights file
- public static boolean RemoveLineFromTextFileInFlightsFile(String id,String Filepath) {
+ public  boolean RemoveLineFromTextFileInFlightsFile(String id,String Filepath) {
         Scanner Reader = null;
         PrintWriter writter = null;
         String line;
@@ -437,7 +439,7 @@ public class Fmanage implements Serializable {
 
 
 // remove line in text file using email 
-     public static boolean RemoveLineFromTextByEmail(String email,String Filepath){
+     public  boolean RemoveLineFromTextByEmail(String email,String Filepath){
         Scanner Reader = null;
         PrintWriter writter = null;
         String line;
@@ -471,7 +473,7 @@ public class Fmanage implements Serializable {
      
        
 //to remove object \\correct 
-       public static boolean RemoveObject(String path){
+       public  boolean RemoveObject(String path){
            File file=new File(path);
            if(file.delete()) 
              return true;
@@ -483,7 +485,7 @@ public class Fmanage implements Serializable {
        
        
 //to remove file \\correct
-       public static boolean RemoveFile(String path){
+       public  boolean RemoveFile(String path){
            File file=new File(path);
             return file.delete();
        }      
@@ -491,7 +493,7 @@ public class Fmanage implements Serializable {
     
        
 // to add new object in file working with regester function without append\\ correc;
-    public static boolean writeobject(Object data,String path){
+    public  boolean writeobject(Object data,String path){
             ObjectOutputStream writer = null;
         try{
         writer =new ObjectOutputStream(new FileOutputStream(new File(path),false));
@@ -506,7 +508,7 @@ public class Fmanage implements Serializable {
     
 
 // to read object from binary file and return it and you must cast it in main function
-     public  static  Object ReadObject(String path){
+     public  Object ReadObject(String path){
         Object infile = null;
         try{
             ObjectInputStream reader =new ObjectInputStream(new FileInputStream(path));
